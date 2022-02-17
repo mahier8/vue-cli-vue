@@ -2,7 +2,18 @@
   <h1>{{ title }}</h1>
   <input type="text" ref="name" />
   <button @click="handleClick">click me</button>
-  <Modal />
+  <!-- we pass in props to the modal, from the parent -->
+  <!-- <Modal
+    header="Sign up for the give away"
+    text="grab your ninja swag for half price"
+  /> -->
+  <!-- data binding example -->
+  <!-- <Modal
+    :header="['Sign up for the give away', 4]"
+    text="grab your ninja swag for half price"
+  /> -->
+  <!-- a better way to do the above -->
+  <Modal :header="header" :text="text" theme="sale" />
 </template>
 
 <script>
@@ -16,6 +27,9 @@ export default {
   data() {
     return {
       title: "My First Vue App",
+      // this data will read in the above template
+      header: "Sign up for the give away",
+      text: "Grab your ninja swag",
     };
   },
   methods: {

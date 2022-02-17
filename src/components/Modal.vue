@@ -1,12 +1,23 @@
 <template>
   <div class="backdrop">
-    <div class="modal">
-      <p>modal content</p>
+    <div class="modal" :class="{ sale: theme === 'sale' }">
+      <!-- we read from the data below in the props -->
+      <!-- <h1>{{ header }}</h1> -->
+      <!-- we can also use data binding, to add in an array -->
+      <h1>{{ header }}</h1>
+      <p>{{ text }}</p>
     </div>
   </div>
 </template>
 
-<style>
+<script>
+// we take in data from props, and name the prop we want
+export default {
+  props: ["header", "text", "theme"],
+};
+</script>
+
+<style scoped>
 .modal {
   width: 400px;
   padding: 20px;
@@ -20,5 +31,20 @@
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
+}
+h1 {
+  color: aquamarine;
+  border: none;
+  padding: 0;
+}
+.modal p {
+  font-style: normal;
+}
+.modal.sale {
+  background: crimson;
+  color: white;
+}
+.modal.sale.h1 {
+  color: white;
 }
 </style>
