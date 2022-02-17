@@ -1,5 +1,5 @@
 <template>
-  <div class="backdrop">
+  <div class="backdrop" @click="closeModal">
     <div class="modal" :class="{ sale: theme === 'sale' }">
       <!-- we read from the data below in the props -->
       <!-- <h1>{{ header }}</h1> -->
@@ -14,6 +14,12 @@
 // we take in data from props, and name the prop we want
 export default {
   props: ["header", "text", "theme"],
+  methods: {
+    closeModal() {
+      // emitting custom events
+      this.$emit("close");
+    },
+  },
 };
 </script>
 

@@ -1,5 +1,6 @@
 <template>
   <h1>{{ title }}</h1>
+  <p>Start</p>
   <input type="text" ref="name" />
   <button @click="handleClick">click me</button>
   <!-- we pass in props to the modal, from the parent -->
@@ -13,7 +14,16 @@
     text="grab your ninja swag for half price"
   /> -->
   <!-- a better way to do the above -->
-  <Modal :header="header" :text="text" theme="sale" />
+  <!-- we can also add different themes if we wanted 
+  to using this way, for example a dark theme -->
+  <!-- emmited custom events to close the modal by 
+  calling the toggleModal function -->
+  <div v-if="showModal">
+    <Modal :header="header" :text="text" theme="sale" @close="toggleModal" />
+  </div>
+  <p>Welcome...</p>
+
+  <button @click="toggleModal">Toggle Modal</button>
 </template>
 
 <script>
@@ -30,6 +40,7 @@ export default {
       // this data will read in the above template
       header: "Sign up for the give away",
       text: "Grab your ninja swag",
+      showModal: false,
     };
   },
   methods: {
@@ -40,6 +51,9 @@ export default {
       this.$refs.name.classList.add("active");
       // to focus on the input, when we click on the button click me
       this.$refs.name.focus();
+    },
+    toggleModal() {
+      this.showModal = !this.showModal;
     },
   },
 };
