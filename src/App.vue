@@ -33,9 +33,26 @@
       <p>Grab your ninja half price</p>
     </Modal>
   </div>
+  <div v-if="showModalTwo">
+    <!-- <Modal :header="header" :text="text" theme="sale" @close="toggleModal" /> -->
+
+    <!-- slots example, this will flow into the slots (similar to props) -->
+    <!-- <Modal theme="sale" @close="toggleModal"> -->
+    <Modal @close="toggleModalTwo">
+      <!-- an example of named slots -->
+      <template v-slot:secondLinks>
+        <a href="">second sign up</a>
+        <a href="">second more info</a>
+      </template>
+      <h1>signup for news letter</h1>
+      <p>updates and promo codes</p>
+    </Modal>
+  </div>
   <p>Welcome...</p>
 
   <button @click.alt="toggleModal">Toggle Modal (alt)</button>
+  <p>the other modal</p>
+  <button @click="toggleModalTwo">Toggle Second Modal</button>
 </template>
 
 <script>
@@ -50,9 +67,10 @@ export default {
     return {
       title: "My First Vue App",
       // this data will read in the above template
-      header: "Sign up for the give away",
-      text: "Grab your ninja swag",
+      // header: "Sign up for the give away",
+      // text: "Grab your ninja swag",
       showModal: false,
+      showModalTwo: false,
     };
   },
   methods: {
@@ -66,6 +84,9 @@ export default {
     },
     toggleModal() {
       this.showModal = !this.showModal;
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo;
     },
   },
 };

@@ -13,6 +13,7 @@ when we click on the backdrop, will the modal change -->
       <slot>default content</slot>
       <div class="actions">
         <slot name="links"></slot>
+        <slot name="secondLinks"></slot>
       </div>
     </div>
   </div>
