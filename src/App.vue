@@ -19,11 +19,23 @@
   <!-- emmited custom events to close the modal by 
   calling the toggleModal function -->
   <div v-if="showModal">
-    <Modal :header="header" :text="text" theme="sale" @close="toggleModal" />
+    <!-- <Modal :header="header" :text="text" theme="sale" @close="toggleModal" /> -->
+
+    <!-- slots example, this will flow into the slots (similar to props) -->
+    <!-- <Modal theme="sale" @close="toggleModal"> -->
+    <Modal @close="toggleModal">
+      <!-- an example of named slots -->
+      <template v-slot:links>
+        <a href="">sign up</a>
+        <a href="">more info</a>
+      </template>
+      <h1>Ninja giveaway</h1>
+      <p>Grab your ninja half price</p>
+    </Modal>
   </div>
   <p>Welcome...</p>
 
-  <button @click="toggleModal">Toggle Modal</button>
+  <button @click.alt="toggleModal">Toggle Modal (alt)</button>
 </template>
 
 <script>
